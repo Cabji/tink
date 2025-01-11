@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64">
+	<clipPath id="cl_3">
+		<rect width="64" height="64"/>
+	</clipPath>
+	<g clip-path="url(#cl_3)">
+		<defs>
+			<linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="-16" y1="0" x2="16" y2="0">
+				<stop offset="0" stop-color="#B38243"/>
+				<stop offset="0.68563104" stop-color="#B38243"/>
+				<stop offset="1" stop-color="#DCB179"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_0)" transform="translate(32 32)" x="-16" y="-25.5" width="32" height="51"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(32 32)" x="-16" y="-25.5" width="32" height="51"/>
+		<defs>
+			<image id="img_0" width="26" height="10" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAKCAYAAACqnE5VAAAABHNCSVQICAgIfAhkiAAAAJBJREFUOI2907ENwyAUhOEfiepBZyGQTMscMZt5A49EOhaBOZwiFYoUJ1LIda+4+6qngBuwMTd3DWzruu4xxilCa43e+64BUkrknKdApRR672gAEWFZlimQiAA8IWMMzrkpkDFmhLz3l6XzPIdbKfUdZK0lhPAy+snQVcda+x76VQao1spxHFOgWisAij897AM2FSHzbTL8KQAAAABJRU5ErkJggg=="/>
+		</defs>
+		<use transform="translate(19 14)" xlink:href="#img_0"/>
+		<path fill="#D76262" transform="translate(36 32)" d="M-11.5 -2.5L-16.5 -2.5L-16.5 2.5L-11.5 2.5L-11.5 -2.5ZM-9.5 -2.5L-4.5 -2.5L-4.5 2.5L-9.5 2.5L-9.5 -2.5ZM2.5 -2.5L-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5ZM-11.5 4.5L-16.5 4.5L-16.5 9.5L-11.5 9.5L-11.5 4.5ZM-4.5 4.5L-9.5 4.5L-9.5 9.5L-4.5 9.5L-4.5 4.5ZM-2.5 4.5L2.5 4.5L2.5 9.5L-2.5 9.5L-2.5 4.5ZM-16.5 11.5L-11.5 11.5L-11.5 16.5L-16.5 16.5L-16.5 11.5ZM-9.5 11.5L-4.5 11.5L-4.5 16.5L-9.5 16.5L-9.5 11.5ZM2.5 11.5L-2.5 11.5L-2.5 16.5L2.5 16.5L2.5 11.5ZM-4.5 18.5L-9.5 18.5L-9.5 23.5L-4.5 23.5L-4.5 18.5Z" fill-rule="evenodd"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(36 32)" d="M-11.5 -2.5L-16.5 -2.5L-16.5 2.5L-11.5 2.5L-11.5 -2.5ZM-9.5 -2.5L-4.5 -2.5L-4.5 2.5L-9.5 2.5L-9.5 -2.5ZM2.5 -2.5L-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5ZM-11.5 4.5L-16.5 4.5L-16.5 9.5L-11.5 9.5L-11.5 4.5ZM-4.5 4.5L-9.5 4.5L-9.5 9.5L-4.5 9.5L-4.5 4.5ZM-2.5 4.5L2.5 4.5L2.5 9.5L-2.5 9.5L-2.5 4.5ZM-16.5 11.5L-11.5 11.5L-11.5 16.5L-16.5 16.5L-16.5 11.5ZM-9.5 11.5L-4.5 11.5L-4.5 16.5L-9.5 16.5L-9.5 11.5ZM2.5 11.5L-2.5 11.5L-2.5 16.5L2.5 16.5L2.5 11.5ZM-4.5 18.5L-9.5 18.5L-9.5 23.5L-4.5 23.5L-4.5 18.5Z" fill-rule="evenodd"/>
+		<defs>
+			<linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="-2.5" y1="0" x2="2.5" y2="0">
+				<stop offset="0" stop-color="#D76262"/>
+				<stop offset="1" stop-color="#971717"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_1)" transform="translate(43 39)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(43 39)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<defs>
+			<linearGradient id="gradient_2" gradientUnits="userSpaceOnUse" x1="-2.5" y1="0" x2="2.5" y2="0">
+				<stop offset="0" stop-color="#D76262"/>
+				<stop offset="1" stop-color="#971717"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_2)" transform="translate(36 53)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(36 53)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<defs>
+			<linearGradient id="gradient_3" gradientUnits="userSpaceOnUse" x1="-2.5" y1="0" x2="2.5" y2="0">
+				<stop offset="0" stop-color="#D76262"/>
+				<stop offset="1" stop-color="#971717"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_3)" transform="translate(22 53)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(22 53)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<defs>
+			<linearGradient id="gradient_4" gradientUnits="userSpaceOnUse" x1="-2.5" y1="0" x2="2.5" y2="0">
+				<stop offset="0" stop-color="#D76262"/>
+				<stop offset="1" stop-color="#971717"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_4)" transform="translate(43 32)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(43 32)" x="-2.5" y="-2.5" width="5" height="5"/>
+		<defs>
+			<linearGradient id="gradient_5" gradientUnits="userSpaceOnUse" x1="-2.5" y1="0" x2="2.5" y2="0">
+				<stop offset="0" stop-color="#D76262"/>
+				<stop offset="1" stop-color="#971717"/>
+			</linearGradient>
+		</defs>
+		<rect fill="url(#gradient_5)" transform="translate(43 49.5)" x="-2.5" y="-6" width="5" height="12"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(43 49.5)" x="-2.5" y="-6" width="5" height="12"/>
+	</g>
+</svg>
