@@ -34,6 +34,13 @@ class TinkBase : public wxFrame
 	private:
 
 	protected:
+		enum
+		{
+			ID_TBTN_HOME = 6000,
+			ID_TBTN_CALCULATOR,
+			ID_TBTN_LOG,
+		};
+
 		wxMenuBar* m_menuBar;
 		wxMenu* m_menuFile;
 		wxToolBar* m_toolBar;

@@ -1,7 +1,7 @@
 #include "MyApp.h"
 #include "TinkMain.h"
 // #include <wx/wx.h>
-// #include <wx/image.h>
+#include <wx/image.h>
 #include <iostream>
 
 #ifdef __WXMSW__
@@ -12,6 +12,9 @@ wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
 {
+	// Initialize the PNG image handler - this is for toolbar icons (png image handling)
+	wxImage::AddHandler(new wxPNGHandler);
+
 	// Allocate a console for debugging output
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
