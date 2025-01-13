@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 set(projectName "Tink")
 set(SOURCES 
       MyApp.cpp
-      TinkBase.cpp 
-      TinkMain.cpp
+      TinkBase.cpp
+      TinkMain.cpp 
    )
 
 project(${projectName} VERSION 0.0.1 LANGUAGES CXX)

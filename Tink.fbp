@@ -19,7 +19,7 @@
     <property name="lua_skip_events">1</property>
     <property name="lua_ui_table">UI</property>
     <property name="name">Tink</property>
-    <property name="path">.</property>
+    <property name="path">C:\cpp\github\tink</property>
     <property name="php_disconnect_events">0</property>
     <property name="php_disconnect_mode">source_name</property>
     <property name="php_skip_events">1</property>
@@ -48,7 +48,7 @@
       <property name="id">wxID_ANY</property>
       <property name="maximum_size"></property>
       <property name="minimum_size"></property>
-      <property name="name">m_mainFrame</property>
+      <property name="name">TinkBase</property>
       <property name="pos"></property>
       <property name="size">500,300</property>
       <property name="style">wxDEFAULT_FRAME_STYLE</property>
@@ -146,12 +146,34 @@
         <property name="window_name"></property>
         <property name="window_style"></property>
         <object class="tool" expanded="true">
-          <property name="bitmap">Load From File; </property>
+          <property name="bitmap">Load From File; icons/home.png</property>
           <property name="context_menu">0</property>
           <property name="id">wxID_ANY</property>
           <property name="kind">wxITEM_NORMAL</property>
           <property name="label">Home</property>
           <property name="name">m_tbBtnHome</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="true">
+          <property name="bitmap">Load From File; icons/calculator.png</property>
+          <property name="context_menu">0</property>
+          <property name="id">wxID_ANY</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_tbBtnCalculator</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="true">
+          <property name="bitmap">Load From File; icons/log.png</property>
+          <property name="context_menu">0</property>
+          <property name="id">wxID_ANY</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_tbBtnBrewingLog</property>
           <property name="permission">protected</property>
           <property name="statusbar"></property>
           <property name="tooltip"></property>
