@@ -1,6 +1,5 @@
 #include "MyApp.h"
 #include "TinkMain.h"
-// #include <wx/wx.h>
 #include <wx/image.h>
 #include <iostream>
 

@@ -146,7 +146,7 @@
         <property name="window_name"></property>
         <property name="window_style"></property>
         <object class="tool" expanded="true">
-          <property name="bitmap">Load From Resource; IDI_PNG_HOME</property>
+          <property name="bitmap">Load From File; icons/home.png</property>
           <property name="context_menu">0</property>
           <property name="id">ID_TBTN_HOME</property>
           <property name="kind">wxITEM_NORMAL</property>
@@ -157,7 +157,7 @@
           <property name="tooltip"></property>
         </object>
         <object class="tool" expanded="true">
-          <property name="bitmap">Load From Resource; IDI_PNG_CALCULATOR</property>
+          <property name="bitmap">Load From File; icons/calculator.png</property>
           <property name="context_menu">0</property>
           <property name="id">ID_TBTN_CALCULATOR</property>
           <property name="kind">wxITEM_NORMAL</property>
@@ -168,7 +168,7 @@
           <property name="tooltip"></property>
         </object>
         <object class="tool" expanded="true">
-          <property name="bitmap">Load From Resource; IDI_PNG_LOG</property>
+          <property name="bitmap">Load From File; icons/log.png</property>
           <property name="context_menu">0</property>
           <property name="id">ID_TBTN_LOG</property>
           <property name="kind">wxITEM_NORMAL</property>

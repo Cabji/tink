@@ -1,8 +1,14 @@
 #include "TinkMain.h"
+#include <wx/toolbar.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
 	: TinkBase(parent, id, title, pos, size, style)
 {
+	// Initialize the PNG image handler
+	wxImage::AddHandler(new wxPNGHandler);
+
 	// Load and scale the PNG icons
 	wxBitmap homeBitmap(wxT("icons/home.png"), wxBITMAP_TYPE_PNG);
 	wxBitmap calculatorBitmap(wxT("icons/calculator.png"), wxBITMAP_TYPE_PNG);

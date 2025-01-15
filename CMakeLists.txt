@@ -4,7 +4,6 @@ set(SOURCES
       MyApp.cpp
       TinkBase.cpp
       TinkMain.cpp 
-      resources.rc
    )
 
 project(${projectName} VERSION 0.0.1 LANGUAGES CXX)
