@@ -20,6 +20,8 @@ public:
 	TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style);
 
 	double const APP_VERSION = 0.1;
+	int const DEFAULT_ICON_HEIGHT = 16;
+	int const DEFAULT_ICON_WIDTH = 16;
 };
 
 #endif // __TinkMain__

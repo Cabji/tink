@@ -2,6 +2,7 @@
 #include <wx/toolbar.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
+#include <wx/webview.h>
 #include <iostream>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
@@ -16,7 +17,7 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	wxImage brewlogImage(wxT("icons/log.png"), wxBITMAP_TYPE_PNG);
 
 	// Scale the bitmaps to the desired size
-	wxSize iconSize(32, 32);
+	wxSize iconSize(DEFAULT_ICON_HEIGHT, DEFAULT_ICON_WIDTH);
 	homeImage = wxImage(homeImage.Rescale(iconSize.GetWidth(), iconSize.GetHeight()));
 	calculatorImage = wxImage(calculatorImage.Rescale(iconSize.GetWidth(), iconSize.GetHeight()));
 	brewlogImage = wxImage(brewlogImage.Rescale(iconSize.GetWidth(), iconSize.GetHeight()));
@@ -32,6 +33,13 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	m_toolBar->SetToolNormalBitmap(ID_TBTN_LOG, brewlogImage);
 	// Realize the toolbar
 	m_toolBar->Realize();
+
+	wxWebView *webView = wxWebView::New(this, wxID_ANY, "https://www.example.com", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
+
+	// Add the web view to the main sizer
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(webView, 1, wxEXPAND, 0);
+	SetSizer(sizer);
 
 	Show();
 }
