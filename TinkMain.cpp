@@ -34,7 +34,7 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// Realize the toolbar
 	m_toolBar->Realize();
 
-	wxWebView *webView = wxWebView::New(this, wxID_ANY, "https://www.example.com", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
+	wxWebView *webView = wxWebView::New(this, wxID_ANY, "https://homedistiller.org/wiki/index.php/Main_Page", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
 
 	// Add the web view to the main sizer
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);

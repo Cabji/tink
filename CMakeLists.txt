@@ -28,6 +28,7 @@ link_directories($ENV{WXWIN}/lib/gcc_x64_lib)
 
 # Find wxWidgets for static linking
 find_package(wxWidgets 3.2 REQUIRED COMPONENTS gl core base webview)
+message(STATUS "wxWidgets_LIBRARIES: ${wxWidgets_LIBRARIES}")
 
 include(${wxWidgets_USE_FILE})
 set(wxWidgets_USE_STATIC ON)
@@ -36,7 +37,7 @@ set(wxWidgets_USE_STATIC ON)
 add_executable(${projectName} WIN32 ${SOURCES})
 
 target_include_directories(${projectName} PRIVATE ${wxWidgets_INCLUDE_DIRS})
-target_link_libraries(${projectName} ${wxWidgets_LIBRARIES} wxmsw)
+target_link_libraries(${projectName} ${wxWidgets_LIBRARIES} wxbase32u wxmsw32u_core wxmsw32u_webview shlwapi)
 
 # Handle project resources...
 # Define the source and destination resource directories
