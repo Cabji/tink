@@ -43,3 +43,51 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 TinkBase::~TinkBase()
 {
 }
+
+TinkCalulators::TinkCalulators( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxGridBagSizer* m_calculatorsSizer;
+	m_calculatorsSizer = new wxGridBagSizer( 0, 0 );
+	m_calculatorsSizer->SetFlexibleDirection( wxBOTH );
+	m_calculatorsSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_lblTitle = new wxStaticText( this, wxID_ANY, _("Calculators"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblTitle->Wrap( -1 );
+	m_calculatorsSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
+
+
+	this->SetSizer( m_calculatorsSizer );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+}
+
+TinkCalulators::~TinkCalulators()
+{
+}
+
+TinkBrewersLog::TinkBrewersLog( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxGridBagSizer* m_brewersLogSizer;
+	m_brewersLogSizer = new wxGridBagSizer( 0, 0 );
+	m_brewersLogSizer->SetFlexibleDirection( wxBOTH );
+	m_brewersLogSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_lblTitle = new wxStaticText( this, wxID_ANY, _("Brewer's Log"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblTitle->Wrap( -1 );
+	m_brewersLogSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
+
+
+	this->SetSizer( m_brewersLogSizer );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+}
+
+TinkBrewersLog::~TinkBrewersLog()
+{
+}
