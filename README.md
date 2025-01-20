@@ -16,4 +16,13 @@ Personal project to create something useful/helpful/fun for the home brewing hob
 
 ## Current aims
 
-- Vector image support (use SVG files in wxWidgets)
+- Calculators:
+ - ABV Combination: mix fluid A with fluid B to create fluid C
+ - ABV dilution: same as above but fluid A always has 0 ABV (it's water, or syrup, or something non-alcohlic)
+ - Sugar content: calculate how much sugar is in a recipe if using various sugar based products such as molasses, golden syrup, agave nectar etc.
+- Brewer's Log: 
+ - What processes are there that may require logging?
+ - What data needs to be logged for each process?
+ - How much granularity is needed in that data?
+
+
