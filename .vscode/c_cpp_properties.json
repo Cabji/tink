@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${WXWIN}/include",
-                "${WXWIN}/lib/gcc_x64_lib/mswu"
+                "${WXWIN}/lib/gcc_x64_",
+                "dll/mswu"
             ],
             "defines": [
                 "_DEBUG",
