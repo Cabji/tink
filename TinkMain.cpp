@@ -2,12 +2,15 @@
 #include <wx/toolbar.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
-#include <wx/webview.h>
 #include <iostream>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
 	: TinkBase(parent, id, title, pos, size, style)
 {
+
+	// Bind event handlers
+	Bind(wxEVT_COMMAND_TOOL_CLICKED, &TinkMain::OnCalculatorTBtnClicked, this, ID_TBTN_CALCULATOR);
+
 	// Initialize the PNG image handler
 	wxImage::AddHandler(new wxPNGHandler);
 
@@ -34,12 +37,41 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// Realize the toolbar
 	m_toolBar->Realize();
 
-	wxWebView *webView = wxWebView::New(this, wxID_ANY, "https://homedistiller.org/wiki/index.php/Main_Page", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
+	m_webViewHome = wxWebView::New(this, wxID_ANY, "https://homedistiller.org/wiki/index.php/Main_Page", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
 
-	// Add the web view to the main sizer
-	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	sizer->Add(webView, 1, wxEXPAND, 0);
-	SetSizer(sizer);
+	// Add the web view to the m_homeWebViewSizer
+	m_homeWebViewSizer->Add(m_webViewHome, 1, wxEXPAND, 0);
+	m_panelHomeWebView->SetSizer(m_homeWebViewSizer);
+	m_currentPanel = m_panelHomeWebView;
+
+	std::cout << "m_currentPanel: " << m_currentPanel << std::endl
+			  << "m_panelHomeWebView: " << m_panelHomeWebView << std::endl;
 
 	Show();
+}
+
+void TinkMain::OnCalculatorTBtnClicked(wxCommandEvent &event)
+{
+	std::cout << "Calculator button clicked" << std::endl;
+
+	// Remove the web view from the sizer
+	m_mainFrameSizer->Detach(m_currentPanel);
+	m_currentPanel->Hide();
+
+	// Add the calculators frame to the sizer
+	m_panelCalculators->Show();
+	m_currentPanel = m_panelCalculators;
+
+	// Layout the sizer to update the UI
+	m_mainFrameSizer->Layout();
+}
+
+void TinkMain::OnHomeTBtnClicked(wxCommandEvent &event)
+{
+	std::cout << "Home button clicked" << std::endl;
+}
+
+bool TinkMain::ShowPanelAsCurrent(wxPanel *panelToShow)
+{
+	return false;
 }

@@ -21,9 +21,10 @@
 #include <wx/icon.h>
 #include <wx/toolbar.h>
 #include <wx/gbsizer.h>
+#include <wx/panel.h>
+#include <wx/stattext.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
-#include <wx/stattext.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -49,6 +50,14 @@ class TinkBase : public wxFrame
 		wxToolBarToolBase* m_tbBtnCalculator;
 		wxToolBarToolBase* m_tbBtnBrewingLog;
 		wxGridBagSizer* m_mainFrameSizer;
+		wxPanel* m_panelHomeWebView;
+		wxGridBagSizer* m_homeWebViewSizer;
+		wxPanel* m_panelCalculators;
+		wxGridBagSizer* m_calculatorsSizer;
+		wxStaticText* m_lblTitle;
+		wxPanel* m_panelBrewersLog;
+		wxGridBagSizer* m_brewersLogSizer;
+		wxStaticText* m_lblTitle1;
 		wxStatusBar* m_statusBar;
 
 	public:
@@ -56,42 +65,6 @@ class TinkBase : public wxFrame
 		TinkBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Tink"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 827,561 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~TinkBase();
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class TinkCalulators
-///////////////////////////////////////////////////////////////////////////////
-class TinkCalulators : public wxFrame
-{
-	private:
-
-	protected:
-		wxStaticText* m_lblTitle;
-
-	public:
-
-		TinkCalulators( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
-
-		~TinkCalulators();
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class TinkBrewersLog
-///////////////////////////////////////////////////////////////////////////////
-class TinkBrewersLog : public wxFrame
-{
-	private:
-
-	protected:
-		wxStaticText* m_lblTitle;
-
-	public:
-
-		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
-
-		~TinkBrewersLog();
 
 };
 
