@@ -11,14 +11,14 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
 #include <wx/string.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
 #include <wx/menu.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
 #include <wx/toolbar.h>
 #include <wx/gbsizer.h>
 #include <wx/panel.h>
@@ -38,7 +38,8 @@ class TinkBase : public wxFrame
 	protected:
 		enum
 		{
-			ID_TBTN_HOME = 6000,
+			ID_MENU_FILE_EXIT = 6000,
+			ID_TBTN_HOME,
 			ID_TBTN_CALCULATOR,
 			ID_TBTN_LOG,
 		};

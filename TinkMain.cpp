@@ -10,7 +10,7 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 
 	// Bind event handlers
 	Bind(wxEVT_COMMAND_TOOL_CLICKED, &TinkMain::OnCalculatorTBtnClicked, this, ID_TBTN_CALCULATOR);
-
+	Bind(wxEVT_MENU, &TinkMain::OnMenuFileExit, this, ID_MENU_FILE_EXIT);
 	// Initialize the PNG image handler
 	wxImage::AddHandler(new wxPNGHandler);
 
@@ -64,6 +64,12 @@ void TinkMain::OnCalculatorTBtnClicked(wxCommandEvent &event)
 
 	// Layout the sizer to update the UI
 	m_mainFrameSizer->Layout();
+}
+
+void TinkMain::OnMenuFileExit(wxCommandEvent &event)
+{
+	std::cout << "Exit menu item clicked" << std::endl;
+	Close(true);
 }
 
 void TinkMain::OnHomeTBtnClicked(wxCommandEvent &event)

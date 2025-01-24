@@ -15,6 +15,10 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_menuBar = new wxMenuBar( 0 );
 	m_menuFile = new wxMenu();
+	wxMenuItem* m_FileExit;
+	m_FileExit = new wxMenuItem( m_menuFile, ID_MENU_FILE_EXIT, wxString( _("E&xit") ) + wxT('\t') + wxT("Ctrl + x"), wxEmptyString, wxITEM_NORMAL );
+	m_menuFile->Append( m_FileExit );
+
 	m_menuBar->Append( m_menuFile, _("&File") );
 
 	this->SetMenuBar( m_menuBar );
