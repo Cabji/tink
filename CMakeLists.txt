@@ -4,6 +4,9 @@ set(SOURCES
       MyApp.cpp
       TinkBase.cpp
       TinkMain.cpp 
+      MyTinkWebView.cpp
+      MyTinkCalculators.cpp
+      MyTinkBrewersLog.cpp
       resources.rc
    )
 

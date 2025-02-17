@@ -36,30 +36,12 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_mainFrameSizer->SetFlexibleDirection( wxBOTH );
 	m_mainFrameSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_panelHomeWebView = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_homeWebViewSizer = new wxGridBagSizer( 0, 0 );
-	m_homeWebViewSizer->SetFlexibleDirection( wxBOTH );
-	m_homeWebViewSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-
-	m_homeWebViewSizer->AddGrowableCol( 0 );
-	m_homeWebViewSizer->AddGrowableRow( 0 );
-
-	m_panelHomeWebView->SetSizer( m_homeWebViewSizer );
-	m_panelHomeWebView->Layout();
-	m_homeWebViewSizer->Fit( m_panelHomeWebView );
-	m_mainFrameSizer->Add( m_panelHomeWebView, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxEXPAND | wxALL, 5 );
-
 	m_panelCalculators = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_panelCalculators->Hide();
 
 	m_calculatorsSizer = new wxGridBagSizer( 0, 0 );
 	m_calculatorsSizer->SetFlexibleDirection( wxBOTH );
 	m_calculatorsSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-	m_lblTitle = new wxStaticText( m_panelCalculators, wxID_ANY, _("Calculators"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_lblTitle->Wrap( -1 );
-	m_calculatorsSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
 
 
 	m_calculatorsSizer->AddGrowableCol( 0 );
@@ -76,10 +58,6 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_brewersLogSizer = new wxGridBagSizer( 0, 0 );
 	m_brewersLogSizer->SetFlexibleDirection( wxBOTH );
 	m_brewersLogSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-	m_lblTitle1 = new wxStaticText( m_panelBrewersLog, wxID_ANY, _("Brewer's Log"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_lblTitle1->Wrap( -1 );
-	m_brewersLogSizer->Add( m_lblTitle1, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
 
 
 	m_panelBrewersLog->SetSizer( m_brewersLogSizer );
@@ -99,5 +77,62 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 }
 
 TinkBase::~TinkBase()
+{
+}
+
+TinkWebView::TinkWebView( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name ) : wxPanel( parent, id, pos, size, style, name )
+{
+	m_sizer = new wxBoxSizer( wxVERTICAL );
+
+
+	this->SetSizer( m_sizer );
+	this->Layout();
+}
+
+TinkWebView::~TinkWebView()
+{
+}
+
+TinkCalculators::TinkCalculators( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name ) : wxPanel( parent, id, pos, size, style, name )
+{
+	m_gbSizer = new wxGridBagSizer( 0, 0 );
+	m_gbSizer->SetFlexibleDirection( wxBOTH );
+	m_gbSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_lblTitle = new wxStaticText( this, wxID_ANY, _("Calculators"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblTitle->Wrap( -1 );
+	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
+
+
+	m_gbSizer->AddGrowableCol( 0 );
+	m_gbSizer->AddGrowableRow( 0 );
+
+	this->SetSizer( m_gbSizer );
+	this->Layout();
+}
+
+TinkCalculators::~TinkCalculators()
+{
+}
+
+TinkBrewersLog::TinkBrewersLog( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name ) : wxPanel( parent, id, pos, size, style, name )
+{
+	m_gbSizer = new wxGridBagSizer( 0, 0 );
+	m_gbSizer->SetFlexibleDirection( wxBOTH );
+	m_gbSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_lblTitle = new wxStaticText( this, wxID_ANY, _("Brewer's Log"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblTitle->Wrap( -1 );
+	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
+
+
+	m_gbSizer->AddGrowableCol( 0 );
+	m_gbSizer->AddGrowableRow( 0 );
+
+	this->SetSizer( m_gbSizer );
+	this->Layout();
+}
+
+TinkBrewersLog::~TinkBrewersLog()
 {
 }

@@ -36,17 +36,12 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	m_toolBar->SetToolNormalBitmap(ID_TBTN_LOG, brewlogImage);
 	// Realize the toolbar
 	m_toolBar->Realize();
-
-	m_webViewHome = wxWebView::New(this, wxID_ANY, "https://homedistiller.org/wiki/index.php/Main_Page", wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault);
-
-	// Add the web view to the m_homeWebViewSizer
-	m_homeWebViewSizer->Add(m_webViewHome, 1, wxEXPAND, 0);
-	m_panelHomeWebView->SetSizer(m_homeWebViewSizer);
-	m_currentPanel = m_panelHomeWebView;
-
-	std::cout << "m_currentPanel: " << m_currentPanel << std::endl
-			  << "m_panelHomeWebView: " << m_panelHomeWebView << std::endl;
-
+	m_webViewHome = new MyTinkWebView(this);
+	m_calculatorsPanel = new MyTinkCalculators(this);
+	m_brewersLogPanel = new MyTinkBrewersLog(this);
+	m_currentPanel = m_webViewHome;
+	m_mainFrameSizer->Add(m_webViewHome, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
+	m_mainFrameSizer->Layout();
 	Show();
 }
 
@@ -54,16 +49,18 @@ void TinkMain::OnCalculatorTBtnClicked(wxCommandEvent &event)
 {
 	std::cout << "Calculator button clicked" << std::endl;
 
-	// Remove the web view from the sizer
+	m_mainFrameSizer->Add(m_calculatorsPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
+	m_mainFrameSizer->Layout();
+	// Remove the current panel from the sizer
 	m_mainFrameSizer->Detach(m_currentPanel);
 	m_currentPanel->Hide();
 
-	// Add the calculators frame to the sizer
-	m_panelCalculators->Show();
-	m_currentPanel = m_panelCalculators;
+	// Point to the calculators frame
+	m_currentPanel = m_calculatorsPanel;
 
 	// Layout the sizer to update the UI
 	m_mainFrameSizer->Layout();
+	m_calculatorsPanel->Show();
 }
 
 void TinkMain::OnMenuFileExit(wxCommandEvent &event)
