@@ -21,7 +21,7 @@ public:
 
 	// custom constructor declared below here
 	TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style);
-	void OnCalculatorTBtnClicked(wxCommandEvent &event);
+	void OnTBtnClicked(wxCommandEvent &event);
 	void OnMenuFileExit(wxCommandEvent &event);
 	void OnHomeTBtnClicked(wxCommandEvent &event);
 	bool ShowPanelAsCurrent(wxPanel *panelToShow);

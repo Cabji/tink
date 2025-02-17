@@ -1,3 +1,4 @@
+#include "TinkBase.h"
 #include "TinkMain.h"
 #include <wx/toolbar.h>
 #include <wx/bitmap.h>
@@ -9,7 +10,7 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 {
 
 	// Bind event handlers
-	Bind(wxEVT_COMMAND_TOOL_CLICKED, &TinkMain::OnCalculatorTBtnClicked, this, ID_TBTN_CALCULATOR);
+	Bind(wxEVT_TOOL, &TinkMain::OnTBtnClicked, this);
 	Bind(wxEVT_MENU, &TinkMain::OnMenuFileExit, this, ID_MENU_FILE_EXIT);
 	// Initialize the PNG image handler
 	wxImage::AddHandler(new wxPNGHandler);
@@ -39,28 +40,40 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	m_webViewHome = new MyTinkWebView(this);
 	m_calculatorsPanel = new MyTinkCalculators(this);
 	m_brewersLogPanel = new MyTinkBrewersLog(this);
+	m_calculatorsPanel->Hide();
+	m_brewersLogPanel->Hide();
 	m_currentPanel = m_webViewHome;
-	m_mainFrameSizer->Add(m_webViewHome, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
+	m_mainFrameSizer->Add(m_currentPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
 	m_mainFrameSizer->Layout();
 	Show();
 }
 
-void TinkMain::OnCalculatorTBtnClicked(wxCommandEvent &event)
+void TinkMain::OnTBtnClicked(wxCommandEvent &event)
 {
-	std::cout << "Calculator button clicked" << std::endl;
-
-	m_mainFrameSizer->Add(m_calculatorsPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
-	m_mainFrameSizer->Layout();
-	// Remove the current panel from the sizer
+	int id = event.GetId();
+	// we should check if id is valid before doing this...
 	m_mainFrameSizer->Detach(m_currentPanel);
 	m_currentPanel->Hide();
 
-	// Point to the calculators frame
-	m_currentPanel = m_calculatorsPanel;
-
-	// Layout the sizer to update the UI
+	switch (id)
+	{
+	case ID_TBTN_HOME:
+		m_currentPanel = m_webViewHome;
+		break;
+	case ID_TBTN_CALCULATOR:
+		m_currentPanel = m_calculatorsPanel;
+		break;
+	case ID_TBTN_LOG:
+		m_currentPanel = m_brewersLogPanel;
+		break;
+	default:
+		std::cout << "Unhandled toolbar button clicked" << std::endl;
+		break;
+	}
+	std::cout << "Toolbar button clicked, id: " << id << std::endl;
+	m_mainFrameSizer->Add(m_currentPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
+	m_currentPanel->Show();
 	m_mainFrameSizer->Layout();
-	m_calculatorsPanel->Show();
 }
 
 void TinkMain::OnMenuFileExit(wxCommandEvent &event)
