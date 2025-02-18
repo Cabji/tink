@@ -21,6 +21,7 @@ public:
 
 private:
 	wxWebView *m_webViewHome = nullptr;
+	void OnWebViewLoaded(wxWebViewEvent &event);
 };
 
 #endif // __MyTinkWebView__

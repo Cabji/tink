@@ -51,27 +51,31 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 void TinkMain::OnTBtnClicked(wxCommandEvent &event)
 {
 	int id = event.GetId();
-	// we should check if id is valid before doing this...
-	m_mainFrameSizer->Detach(m_currentPanel);
-	m_currentPanel->Hide();
+	wxPanel *newPanel = nullptr;
 
 	switch (id)
 	{
 	case ID_TBTN_HOME:
-		m_currentPanel = m_webViewHome;
+		newPanel = m_webViewHome;
 		break;
 	case ID_TBTN_CALCULATOR:
-		m_currentPanel = m_calculatorsPanel;
+		newPanel = m_calculatorsPanel;
 		break;
 	case ID_TBTN_LOG:
-		m_currentPanel = m_brewersLogPanel;
+		newPanel = m_brewersLogPanel;
 		break;
 	default:
 		std::cout << "Unhandled toolbar button clicked" << std::endl;
-		break;
+		return;
 	}
-	std::cout << "Toolbar button clicked, id: " << id << std::endl;
-	m_mainFrameSizer->Add(m_currentPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
+
+	if (newPanel == m_currentPanel)
+	{
+		return;
+	}
+
+	m_currentPanel->Hide();
+	m_currentPanel = newPanel;
 	m_currentPanel->Show();
 	m_mainFrameSizer->Layout();
 }
