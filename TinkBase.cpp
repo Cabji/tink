@@ -36,35 +36,6 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_mainFrameSizer->SetFlexibleDirection( wxBOTH );
 	m_mainFrameSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_panelCalculators = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panelCalculators->Hide();
-
-	m_calculatorsSizer = new wxGridBagSizer( 0, 0 );
-	m_calculatorsSizer->SetFlexibleDirection( wxBOTH );
-	m_calculatorsSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-
-	m_calculatorsSizer->AddGrowableCol( 0 );
-	m_calculatorsSizer->AddGrowableRow( 0 );
-
-	m_panelCalculators->SetSizer( m_calculatorsSizer );
-	m_panelCalculators->Layout();
-	m_calculatorsSizer->Fit( m_panelCalculators );
-	m_mainFrameSizer->Add( m_panelCalculators, wxGBPosition( 0, 2 ), wxGBSpan( 1, 1 ), wxEXPAND | wxALL, 5 );
-
-	m_panelBrewersLog = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panelBrewersLog->Hide();
-
-	m_brewersLogSizer = new wxGridBagSizer( 0, 0 );
-	m_brewersLogSizer->SetFlexibleDirection( wxBOTH );
-	m_brewersLogSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-
-	m_panelBrewersLog->SetSizer( m_brewersLogSizer );
-	m_panelBrewersLog->Layout();
-	m_brewersLogSizer->Fit( m_panelBrewersLog );
-	m_mainFrameSizer->Add( m_panelBrewersLog, wxGBPosition( 0, 1 ), wxGBSpan( 1, 1 ), wxEXPAND | wxALL, 5 );
-
 
 	m_mainFrameSizer->AddGrowableCol( 0 );
 	m_mainFrameSizer->AddGrowableRow( 0 );
@@ -87,6 +58,7 @@ TinkWebView::TinkWebView( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 
 	this->SetSizer( m_sizer );
 	this->Layout();
+	m_sizer->Fit( this );
 }
 
 TinkWebView::~TinkWebView()
@@ -101,14 +73,52 @@ TinkCalculators::TinkCalculators( wxWindow* parent, wxWindowID id, const wxPoint
 
 	m_lblTitle = new wxStaticText( this, wxID_ANY, _("Calculators"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblTitle->Wrap( -1 );
-	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
+	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
+
+	wxStaticBoxSizer* m_sbSizerDilution;
+	m_sbSizerDilution = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Dilution") ), wxVERTICAL );
+
+	m_lblVolFluidA = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid A Volume"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblVolFluidA->Wrap( -1 );
+	m_sbSizerDilution->Add( m_lblVolFluidA, 0, wxALL, 5 );
+
+	m_VolumeFluidA = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerDilution->Add( m_VolumeFluidA, 0, wxALL, 5 );
+
+	m_lblVolFluidB = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid B Volume"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblVolFluidB->Wrap( -1 );
+	m_sbSizerDilution->Add( m_lblVolFluidB, 0, wxALL, 5 );
+
+	m_VolumeFluidB = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerDilution->Add( m_VolumeFluidB, 0, wxALL, 5 );
+
+	m_lblABVFluidA = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid A ABV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblABVFluidA->Wrap( -1 );
+	m_sbSizerDilution->Add( m_lblABVFluidA, 0, wxALL, 5 );
+
+	m_ABVFluidA = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerDilution->Add( m_ABVFluidA, 0, wxALL, 5 );
+
+	m_lblABVFluidB = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid B ABV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblABVFluidB->Wrap( -1 );
+	m_sbSizerDilution->Add( m_lblABVFluidB, 0, wxALL, 5 );
+
+	m_ABVFluidB = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerDilution->Add( m_ABVFluidB, 0, wxALL, 5 );
+
+	m_DilutionResult = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Result..."), wxDefaultPosition, wxDefaultSize, 0 );
+	m_DilutionResult->Wrap( -1 );
+	m_sbSizerDilution->Add( m_DilutionResult, 0, wxALL, 5 );
 
 
-	m_gbSizer->AddGrowableCol( 0 );
-	m_gbSizer->AddGrowableRow( 0 );
+	m_gbSizer->Add( m_sbSizerDilution, wxGBPosition( 1, 0 ), wxGBSpan( 1, 1 ), wxEXPAND, 5 );
+
+
+	m_gbSizer->AddGrowableRow( 1 );
 
 	this->SetSizer( m_gbSizer );
 	this->Layout();
+	m_gbSizer->Fit( this );
 }
 
 TinkCalculators::~TinkCalculators()
@@ -131,6 +141,7 @@ TinkBrewersLog::TinkBrewersLog( wxWindow* parent, wxWindowID id, const wxPoint& 
 
 	this->SetSizer( m_gbSizer );
 	this->Layout();
+	m_gbSizer->Fit( this );
 }
 
 TinkBrewersLog::~TinkBrewersLog()

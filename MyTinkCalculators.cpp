@@ -1,8 +1,6 @@
 #include "MyTinkCalculators.h"
 
-MyTinkCalculators::MyTinkCalculators( wxWindow* parent )
-:
-TinkCalculators( parent )
+MyTinkCalculators::MyTinkCalculators(wxWindow *parent)
+	: TinkCalculators(parent)
 {
-
 }

@@ -21,11 +21,13 @@
 #include <wx/settings.h>
 #include <wx/toolbar.h>
 #include <wx/gbsizer.h>
-#include <wx/panel.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
 #include <wx/sizer.h>
+#include <wx/panel.h>
 #include <wx/stattext.h>
+#include <wx/textctrl.h>
+#include <wx/statbox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -52,10 +54,6 @@ class TinkBase : public wxFrame
 		wxToolBarToolBase* m_tbBtnCalculator;
 		wxToolBarToolBase* m_tbBtnBrewingLog;
 		wxGridBagSizer* m_mainFrameSizer;
-		wxPanel* m_panelCalculators;
-		wxGridBagSizer* m_calculatorsSizer;
-		wxPanel* m_panelBrewersLog;
-		wxGridBagSizer* m_brewersLogSizer;
 		wxStatusBar* m_statusBar;
 
 	public:
@@ -78,7 +76,7 @@ class TinkWebView : public wxPanel
 
 	public:
 
-		TinkWebView( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		TinkWebView( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkWebView();
 
@@ -94,10 +92,19 @@ class TinkCalculators : public wxPanel
 	protected:
 		wxGridBagSizer* m_gbSizer;
 		wxStaticText* m_lblTitle;
+		wxStaticText* m_lblVolFluidA;
+		wxTextCtrl* m_VolumeFluidA;
+		wxStaticText* m_lblVolFluidB;
+		wxTextCtrl* m_VolumeFluidB;
+		wxStaticText* m_lblABVFluidA;
+		wxTextCtrl* m_ABVFluidA;
+		wxStaticText* m_lblABVFluidB;
+		wxTextCtrl* m_ABVFluidB;
+		wxStaticText* m_DilutionResult;
 
 	public:
 
-		TinkCalculators( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		TinkCalculators( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkCalculators();
 
@@ -116,7 +123,7 @@ class TinkBrewersLog : public wxPanel
 
 	public:
 
-		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkBrewersLog();
 
