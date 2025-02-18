@@ -4,6 +4,7 @@ set(SOURCES
       MyApp.cpp
       TinkBase.cpp
       TinkMain.cpp 
+      cabji/sanitizeInput.h
       MyTinkWebView.cpp
       MyTinkCalculators.cpp
       MyTinkBrewersLog.cpp

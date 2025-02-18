@@ -18,8 +18,6 @@ Personal project to create something useful/helpful/fun for the home brewing hob
 
 - Calculators:
 - ABV Combination: mix fluid A with fluid B to create fluid C
-  - Rename Dilution labels/variables to be Combination. Dilution and combination are the same thing. Diution is just 1 fluid has 0 ABV
-- ABV dilution: same as above but fluid A always has 0 ABV (it's water, or syrup, or something non-alcohlic)
 - Sugar content: calculate how much sugar is in a recipe if using various sugar based products such as molasses, golden syrup, agave nectar etc.
 - Brewer's Log:
 - What processes are there that may require logging?

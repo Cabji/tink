@@ -75,43 +75,43 @@ TinkCalculators::TinkCalculators( wxWindow* parent, wxWindowID id, const wxPoint
 	m_lblTitle->Wrap( -1 );
 	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
 
-	wxStaticBoxSizer* m_sbSizerDilution;
-	m_sbSizerDilution = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Dilution") ), wxVERTICAL );
+	wxStaticBoxSizer* m_sbSizerFluidCombination;
+	m_sbSizerFluidCombination = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Fluid Combination") ), wxVERTICAL );
 
-	m_lblVolFluidA = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid A Volume"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblVolFluidA = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Fluid A Volume"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblVolFluidA->Wrap( -1 );
-	m_sbSizerDilution->Add( m_lblVolFluidA, 0, wxALL, 5 );
+	m_sbSizerFluidCombination->Add( m_lblVolFluidA, 0, wxALL, 5 );
 
-	m_VolumeFluidA = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_sbSizerDilution->Add( m_VolumeFluidA, 0, wxALL, 5 );
+	m_VolumeFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerFluidCombination->Add( m_VolumeFluidA, 0, wxALL, 5 );
 
-	m_lblVolFluidB = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid B Volume"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_lblVolFluidB->Wrap( -1 );
-	m_sbSizerDilution->Add( m_lblVolFluidB, 0, wxALL, 5 );
-
-	m_VolumeFluidB = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_sbSizerDilution->Add( m_VolumeFluidB, 0, wxALL, 5 );
-
-	m_lblABVFluidA = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid A ABV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblABVFluidA = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Fluid A ABV"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblABVFluidA->Wrap( -1 );
-	m_sbSizerDilution->Add( m_lblABVFluidA, 0, wxALL, 5 );
+	m_sbSizerFluidCombination->Add( m_lblABVFluidA, 0, wxALL, 5 );
 
-	m_ABVFluidA = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_sbSizerDilution->Add( m_ABVFluidA, 0, wxALL, 5 );
+	m_ABVFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerFluidCombination->Add( m_ABVFluidA, 0, wxALL, 5 );
 
-	m_lblABVFluidB = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Fluid B ABV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblVolFluidB = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("+\nFluid B Volume"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblVolFluidB->Wrap( -1 );
+	m_sbSizerFluidCombination->Add( m_lblVolFluidB, 0, wxALL, 5 );
+
+	m_VolumeFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerFluidCombination->Add( m_VolumeFluidB, 0, wxALL, 5 );
+
+	m_lblABVFluidB = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Fluid B ABV"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblABVFluidB->Wrap( -1 );
-	m_sbSizerDilution->Add( m_lblABVFluidB, 0, wxALL, 5 );
+	m_sbSizerFluidCombination->Add( m_lblABVFluidB, 0, wxALL, 5 );
 
-	m_ABVFluidB = new wxTextCtrl( m_sbSizerDilution->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_sbSizerDilution->Add( m_ABVFluidB, 0, wxALL, 5 );
+	m_ABVFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_sbSizerFluidCombination->Add( m_ABVFluidB, 0, wxALL, 5 );
 
-	m_DilutionResult = new wxStaticText( m_sbSizerDilution->GetStaticBox(), wxID_ANY, _("Result..."), wxDefaultPosition, wxDefaultSize, 0 );
-	m_DilutionResult->Wrap( -1 );
-	m_sbSizerDilution->Add( m_DilutionResult, 0, wxALL, 5 );
+	m_FluidCombinationResult = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Result = ? @ ?ABV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_FluidCombinationResult->Wrap( -1 );
+	m_sbSizerFluidCombination->Add( m_FluidCombinationResult, 0, wxALL, 5 );
 
 
-	m_gbSizer->Add( m_sbSizerDilution, wxGBPosition( 1, 0 ), wxGBSpan( 1, 1 ), wxEXPAND, 5 );
+	m_gbSizer->Add( m_sbSizerFluidCombination, wxGBPosition( 1, 0 ), wxGBSpan( 1, 1 ), wxEXPAND, 5 );
 
 
 	m_gbSizer->AddGrowableRow( 1 );

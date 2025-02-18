@@ -94,13 +94,13 @@ class TinkCalculators : public wxPanel
 		wxStaticText* m_lblTitle;
 		wxStaticText* m_lblVolFluidA;
 		wxTextCtrl* m_VolumeFluidA;
-		wxStaticText* m_lblVolFluidB;
-		wxTextCtrl* m_VolumeFluidB;
 		wxStaticText* m_lblABVFluidA;
 		wxTextCtrl* m_ABVFluidA;
+		wxStaticText* m_lblVolFluidB;
+		wxTextCtrl* m_VolumeFluidB;
 		wxStaticText* m_lblABVFluidB;
 		wxTextCtrl* m_ABVFluidB;
-		wxStaticText* m_DilutionResult;
+		wxStaticText* m_FluidCombinationResult;
 
 	public:
 
