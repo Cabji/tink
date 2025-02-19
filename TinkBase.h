@@ -90,6 +90,14 @@ class TinkCalculators : public wxPanel
 	private:
 
 	protected:
+		enum
+		{
+			ID_CALC_INPUT_FAVOL = 6000,
+			ID_CALC_INPUT_FAABV,
+			ID_CALC_INPUT_FBVOL,
+			ID_CALC_INPUT_FBABV,
+		};
+
 		wxGridBagSizer* m_gbSizer;
 		wxStaticText* m_lblTitle;
 		wxStaticText* m_lblVolFluidA;

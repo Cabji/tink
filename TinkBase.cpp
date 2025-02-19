@@ -82,28 +82,28 @@ TinkCalculators::TinkCalculators( wxWindow* parent, wxWindowID id, const wxPoint
 	m_lblVolFluidA->Wrap( -1 );
 	m_sbSizerFluidCombination->Add( m_lblVolFluidA, 0, wxALL, 5 );
 
-	m_VolumeFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_VolumeFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), ID_CALC_INPUT_FAVOL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_sbSizerFluidCombination->Add( m_VolumeFluidA, 0, wxALL, 5 );
 
 	m_lblABVFluidA = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Fluid A ABV"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblABVFluidA->Wrap( -1 );
 	m_sbSizerFluidCombination->Add( m_lblABVFluidA, 0, wxALL, 5 );
 
-	m_ABVFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_ABVFluidA = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), ID_CALC_INPUT_FAABV, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_sbSizerFluidCombination->Add( m_ABVFluidA, 0, wxALL, 5 );
 
 	m_lblVolFluidB = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("+\nFluid B Volume"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblVolFluidB->Wrap( -1 );
 	m_sbSizerFluidCombination->Add( m_lblVolFluidB, 0, wxALL, 5 );
 
-	m_VolumeFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_VolumeFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), ID_CALC_INPUT_FBVOL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_sbSizerFluidCombination->Add( m_VolumeFluidB, 0, wxALL, 5 );
 
 	m_lblABVFluidB = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Fluid B ABV"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_lblABVFluidB->Wrap( -1 );
 	m_sbSizerFluidCombination->Add( m_lblABVFluidB, 0, wxALL, 5 );
 
-	m_ABVFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_ABVFluidB = new wxTextCtrl( m_sbSizerFluidCombination->GetStaticBox(), ID_CALC_INPUT_FBABV, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_sbSizerFluidCombination->Add( m_ABVFluidB, 0, wxALL, 5 );
 
 	m_FluidCombinationResult = new wxStaticText( m_sbSizerFluidCombination->GetStaticBox(), wxID_ANY, _("Result = ? @ ?ABV"), wxDefaultPosition, wxDefaultSize, 0 );

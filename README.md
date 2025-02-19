@@ -17,7 +17,7 @@ Personal project to create something useful/helpful/fun for the home brewing hob
 ## Current aims
 
 - Calculators:
-- ABV Combination: mix fluid A with fluid B to create fluid C
+  - Target ABV calc: we have FAVol @ FAABV, what do we add to it to get targetABV?
 - Sugar content: calculate how much sugar is in a recipe if using various sugar based products such as molasses, golden syrup, agave nectar etc.
 - Brewer's Log:
 - What processes are there that may require logging?

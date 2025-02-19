@@ -23,11 +23,32 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 		return;
 	}
 
-	bool result = ValidateValue(tripperWidget->GetValue());
-	if (!result)
+	wxString value = tripperWidget->GetValue();
+	double sanitizedValue;
+	if (!value.ToDouble(&sanitizedValue))
 	{
 		std::cout << "Invalid value detected, so returning." << std::endl;
 		return;
+	}
+
+	int id = tripperWidget->GetId();
+	switch (id)
+	{
+	case ID_CALC_INPUT_FAVOL:
+		std::cout << "ABV Fluid A changed." << std::endl;
+		break;
+	case ID_CALC_INPUT_FBVOL:
+		std::cout << "ABV Fluid B changed." << std::endl;
+		break;
+	case ID_CALC_INPUT_FAABV:
+		std::cout << "Volume Fluid A changed." << std::endl;
+		break;
+	case ID_CALC_INPUT_FBABV:
+		std::cout << "Volume Fluid B changed." << std::endl;
+		break;
+	default:
+		std::cout << "Unhandled widget tripped this event handler." << std::endl;
+		break;
 	}
 
 	double abvA = 0.0;
@@ -36,6 +57,8 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 	double volumeB = 0.0;
 	double totalVolume = 0.0;
 	double totalABV = 0.0;
+	wxString sTotalABV = wxEmptyString;
+	wxString sTotalVol = wxEmptyString;
 
 	abvA = wxAtof(m_ABVFluidA->GetValue());
 	abvB = wxAtof(m_ABVFluidB->GetValue());
@@ -44,7 +67,9 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 
 	totalVolume = volumeA + volumeB;
 	totalABV = ((abvA * volumeA) + (abvB * volumeB)) / totalVolume;
+	sTotalABV = wxString::Format(wxT("%.2f"), totalABV);
+	sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
 
-	m_TotalVolume->SetValue(wxString::Format(wxT("%.2f"), totalVolume));
-	m_TotalABV->SetValue(wxString::Format(wxT("%.2f"), totalABV));
+	m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV");
+	Layout();
 }
