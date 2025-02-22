@@ -58,7 +58,7 @@
       <property name="two_step_creation">0</property>
       <property name="window_extra_style"></property>
       <property name="window_name"></property>
-      <property name="window_style">wxTAB_TRAVERSAL</property>
+      <property name="window_style">wxBORDER_THEME|wxCLIP_CHILDREN|wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
       <object class="wxMenuBar" expanded="true">
         <property name="bg"></property>
