@@ -25,6 +25,7 @@
 #include <wx/frame.h>
 #include <wx/sizer.h>
 #include <wx/panel.h>
+#include <wx/choice.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/statbox.h>
@@ -98,8 +99,7 @@ class TinkCalculators : public wxPanel
 			ID_CALC_INPUT_FBABV,
 		};
 
-		wxGridBagSizer* m_gbSizer;
-		wxStaticText* m_lblTitle;
+		wxChoice* m_CalculatorType;
 		wxStaticText* m_lblVolFluidA;
 		wxTextCtrl* m_VolumeFluidA;
 		wxStaticText* m_lblABVFluidA;
@@ -108,6 +108,8 @@ class TinkCalculators : public wxPanel
 		wxTextCtrl* m_VolumeFluidB;
 		wxStaticText* m_lblABVFluidB;
 		wxTextCtrl* m_ABVFluidB;
+		wxStaticText* m_lblABVTarget;
+		wxTextCtrl* m_ABVTarget;
 		wxStaticText* m_FluidCombinationResult;
 
 	public:
