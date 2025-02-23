@@ -19,6 +19,7 @@ public:
 	//// end generated class members
 private:
 	void OnCombinationCalcTextChanged(wxCommandEvent &event);
+	void OnCalcTypeChanged(wxCommandEvent &event);
 };
 
 #endif // __MyTinkCalculators__
