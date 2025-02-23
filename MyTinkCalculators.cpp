@@ -54,6 +54,7 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 	abvB = wxAtof(m_ABVFluidB->GetValue());
 	volumeA = wxAtof(m_VolumeFluidA->GetValue());
 	volumeB = wxAtof(m_VolumeFluidB->GetValue());
+	targetABV = wxAtof(m_ABVTarget->GetValue());
 
 	if (m_CalculatorType->GetStringSelection() == "Fluid Combination")
 	{
@@ -66,22 +67,25 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 		m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV");	
 	}
 	else if (m_CalculatorType->GetStringSelection() == "Target ABV")
-	if (abvB <= abvA)
-        {
-            std::cout << "Impossible to reach the target ABV with the given Fluid B ABV." << std::endl;
-            m_FluidCombinationResult->SetLabelText("=\nResult: Impossible to reach the target ABV with the given Fluid B ABV.");
-        }
-        else
-        {
-            // Calculate the required volume of Fluid B to get Target ABV with Fluid A @ ABV
-            volumeB = (volumeA * (targetABV - abvA)) / (abvB - targetABV);
-            totalVolume = volumeA + volumeB;
-            sTotalABV = wxString::Format(wxT("%.2f"), targetABV);
-            sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
+	{
+		std::cout << "abvA: " << abvA << ", abvB: " << abvB << ", volumeA: " << volumeA << ", volumeB: " << volumeB << ", targetABV: " << targetABV << std::endl;
+		if ((targetABV < abvA && abvB >= abvA) || (targetABV > abvA && abvB <= abvA))
+		{
+			std::cout << "Impossible to reach the target ABV with the given Fluid B ABV." << std::endl;
+			m_FluidCombinationResult->SetLabelText("=\nResult: Impossible to reach the target ABV with the given Fluid B ABV.");
+		}
+		else
+		{
+			// Calculate the required volume of Fluid B to get Target ABV with Fluid A @ ABV
+			volumeB = (volumeA * (targetABV - abvA)) / (abvB - targetABV);
+			totalVolume = volumeA + volumeB;
+			sTotalABV = wxString::Format(wxT("%.2f"), targetABV);
+			sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
 
-            std::cout << "Required Volume of Fluid B: '" << volumeB << "' to achieve '" << sTotalVol << "' @ '" << sTotalABV << "' ABV" << std::endl;
-            m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV\nRequired Volume of Fluid B: " + wxString::Format(wxT("%.2f"), volumeB));
-        }
+			std::cout << "Required Volume of Fluid B: '" << volumeB << "' to achieve '" << sTotalVol << "' @ '" << sTotalABV << "' ABV" << std::endl;
+			m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV\nRequired Volume of Fluid B: " + wxString::Format(wxT("%.2f"), volumeB));
+		}
+	}
 	Layout();
 }
 
