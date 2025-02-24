@@ -9,6 +9,8 @@ MyTinkCalculators::MyTinkCalculators(wxWindow *parent)
 	m_ABVFluidB->Bind(wxEVT_TEXT, &MyTinkCalculators::OnCombinationCalcTextChanged, this);
 	m_VolumeFluidA->Bind(wxEVT_TEXT, &MyTinkCalculators::OnCombinationCalcTextChanged, this);
 	m_VolumeFluidB->Bind(wxEVT_TEXT, &MyTinkCalculators::OnCombinationCalcTextChanged, this);
+	m_ABVTarget->Bind(wxEVT_TEXT, &MyTinkCalculators::OnCombinationCalcTextChanged, this);
+	m_CalculatorType->Bind(wxEVT_CHOICE, &MyTinkCalculators::OnCalcTypeChanged, this);
 }
 
 void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
@@ -28,33 +30,21 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 	if (!value.ToDouble(&sanitizedValue))
 	{
 		std::cout << "Invalid value detected, so returning." << std::endl;
+		tripperWidget->SetBackgroundColour(wxColour(255, 0, 0));
+		tripperWidget->SetForegroundColour(wxColour(255, 255, 255));
 		return;
 	}
-
-	int id = tripperWidget->GetId();
-	switch (id)
+	else
 	{
-	case ID_CALC_INPUT_FAVOL:
-		std::cout << "ABV Fluid A changed." << std::endl;
-		break;
-	case ID_CALC_INPUT_FBVOL:
-		std::cout << "ABV Fluid B changed." << std::endl;
-		break;
-	case ID_CALC_INPUT_FAABV:
-		std::cout << "Volume Fluid A changed." << std::endl;
-		break;
-	case ID_CALC_INPUT_FBABV:
-		std::cout << "Volume Fluid B changed." << std::endl;
-		break;
-	default:
-		std::cout << "Unhandled widget tripped this event handler." << std::endl;
-		break;
+		tripperWidget->SetBackgroundColour(wxColour(255, 255, 255));
+		tripperWidget->SetForegroundColour(wxColour(0, 0, 0));
 	}
 
 	double abvA = 0.0;
 	double abvB = 0.0;
 	double volumeA = 0.0;
 	double volumeB = 0.0;
+	double targetABV = 0.0;
 	double totalVolume = 0.0;
 	double totalABV = 0.0;
 	wxString sTotalABV = wxEmptyString;
@@ -64,12 +54,83 @@ void MyTinkCalculators::OnCombinationCalcTextChanged(wxCommandEvent &event)
 	abvB = wxAtof(m_ABVFluidB->GetValue());
 	volumeA = wxAtof(m_VolumeFluidA->GetValue());
 	volumeB = wxAtof(m_VolumeFluidB->GetValue());
+	targetABV = wxAtof(m_ABVTarget->GetValue());
 
-	totalVolume = volumeA + volumeB;
-	totalABV = ((abvA * volumeA) + (abvB * volumeB)) / totalVolume;
-	sTotalABV = wxString::Format(wxT("%.2f"), totalABV);
-	sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
+	if (m_CalculatorType->GetStringSelection() == "Fluid Combination")
+	{
+		totalVolume = volumeA + volumeB;
+		totalABV = ((abvA * volumeA) + (abvB * volumeB)) / totalVolume;
+		sTotalABV = wxString::Format(wxT("%.2f"), totalABV);
+		sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
 
-	m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV");
+		std::cout << "Total Volume: '" << sTotalVol << "' @ '" << sTotalABV << "' ABV" << std::endl;
+		m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV");	
+	}
+	else if (m_CalculatorType->GetStringSelection() == "Target ABV")
+	{
+		std::cout << "abvA: " << abvA << ", abvB: " << abvB << ", volumeA: " << volumeA << ", volumeB: " << volumeB << ", targetABV: " << targetABV << std::endl;
+		if ((targetABV < abvA && abvB >= abvA) || (targetABV > abvA && abvB <= abvA))
+		{
+			std::cout << "Impossible to reach the target ABV with the given Fluid B ABV." << std::endl;
+			m_FluidCombinationResult->SetLabelText("=\nResult: Impossible to reach the target ABV with the given Fluid B ABV.");
+		}
+		else
+		{
+			// Calculate the required volume of Fluid B to get Target ABV with Fluid A @ ABV
+			volumeB = (volumeA * (targetABV - abvA)) / (abvB - targetABV);
+			totalVolume = volumeA + volumeB;
+			sTotalABV = wxString::Format(wxT("%.2f"), targetABV);
+			sTotalVol = wxString::Format(wxT("%.2f"), totalVolume);
+
+			std::cout << "Required Volume of Fluid B: '" << volumeB << "' to achieve '" << sTotalVol << "' @ '" << sTotalABV << "' ABV" << std::endl;
+			m_FluidCombinationResult->SetLabelText("=\nResult: " + sTotalVol + " @ " + sTotalABV + " ABV\nRequired Volume of Fluid B: " + wxString::Format(wxT("%.2f"), volumeB));
+		}
+	}
+	Layout();
+}
+
+void MyTinkCalculators::OnCalcTypeChanged(wxCommandEvent &event)
+{
+	wxChoice *choice = dynamic_cast<wxChoice *>(event.GetEventObject());
+	if (!choice)
+	{
+		std::cout << "We don't know which widget tripped this event handler, so returning." << std::endl;
+		return;
+	}
+
+	// de/activate the appropriate calculator widgets
+	wxString calcType = choice->GetStringSelection();
+	if (calcType == "Fluid Combination")
+	{
+		m_ABVFluidA->Enable();
+		m_ABVFluidB->Enable();
+		m_VolumeFluidA->Enable();
+		m_VolumeFluidB->Enable();
+		m_lblVolFluidB->Enable();
+
+		m_ABVTarget->Disable();
+		m_lblABVTarget->Disable();
+
+		m_lblABVFluidA->SetLabelText("Fluid A ABV");
+		m_lblABVFluidB->SetLabelText("Fluid B ABV");
+		m_lblVolFluidA->SetLabelText("Fluid A Volume");
+		m_lblVolFluidB->SetLabelText("+\nFluid B Volume");
+	}
+	if (calcType == "Target ABV")
+	{
+		m_VolumeFluidA->Enable();
+		m_ABVFluidA->Enable();
+		m_ABVFluidB->Enable();
+		m_ABVTarget->Enable();
+		m_lblABVTarget->Enable();
+		
+		m_VolumeFluidB->Disable();
+		m_VolumeFluidB->SetValue("");
+		m_lblVolFluidB->Disable();
+		
+		m_lblVolFluidA->SetLabelText("Fluid A Volume");
+		m_lblABVFluidB->SetLabelText("Fluid B ABV");
+		m_lblABVTarget->SetLabelText("Target ABV");
+	}
 	Layout();
 }
