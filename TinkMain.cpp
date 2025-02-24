@@ -79,8 +79,9 @@ void TinkMain::OnTBtnClicked(wxCommandEvent &event)
 	m_currentPanel = newPanel;
 	m_mainFrameSizer->Add(m_currentPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
 	m_currentPanel->Layout();
-	Layout();
+	m_currentPanel->FitInside();
 	m_currentPanel->Show();
+	Layout();
 }
 
 void TinkMain::OnMenuFileExit(wxCommandEvent &event)
