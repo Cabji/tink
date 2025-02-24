@@ -1,5 +1,4 @@
 #include "MyTinkCalculators.h"
-#include "cabji/sanitizeInput.h"
 
 MyTinkCalculators::MyTinkCalculators(wxWindow *parent)
 	: TinkCalculators(parent)
