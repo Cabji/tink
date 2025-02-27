@@ -22,6 +22,16 @@ set(wxCOMPONENTS
       base
       webview
    )
+# ** Configure: additional components this project uses
+set(COMPONENTS
+    SQLiteCpp
+)
+
+# Experimental: set CMAKE_PREFIX_PATH to root level of your development environment file structure
+# this allows CMake to find where 3rd party libary config.cmake files are located
+set(CMAKE_PREFIX_PATH
+    "C:/cpp"
+)
 
 # wxWidgets built library location names
 # !! the next values often cause problems if not set correctly
@@ -111,6 +121,7 @@ link_directories(${wxWidgets_LIB_DIR})
 
 # Find wxWidgets for linking
 find_package(wxWidgets 3.2 REQUIRED COMPONENTS ${wxCOMPONENTS})
+find_package(${COMPONENTS} REQUIRED)
 if (wxWidgets_FOUND)
     message(STATUS "wxWidgets assets found by CMake in ${wxWidgets_ROOT_DIR}")
     include(${wxWidgets_USE_FILE})
@@ -123,6 +134,7 @@ add_executable(${projectName} WIN32 ${SOURCES})
 
 target_include_directories(${projectName} PRIVATE ${wxWidgets_INCLUDE_DIRS})
 target_link_libraries(${projectName} ${wxWidgets_LIBRARIES})
+target_link_libraries(${projectName} ${COMPONENTS})
 
 # Handle project resources...
 # Define the source and destination resource directories
