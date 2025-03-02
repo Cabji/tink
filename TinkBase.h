@@ -30,6 +30,8 @@
 #include <wx/textctrl.h>
 #include <wx/statbox.h>
 #include <wx/button.h>
+#include <wx/notebook.h>
+#include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -138,6 +140,27 @@ class TinkBrewersLog : public wxPanel
 		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 206,159 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkBrewersLog();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class TinkOptions
+///////////////////////////////////////////////////////////////////////////////
+class TinkOptions : public wxDialog
+{
+	private:
+
+	protected:
+		wxNotebook* m_optionsNotebook;
+		wxPanel* m_optionsPageGeneral;
+		wxStaticText* m_lblSettingMode;
+		wxChoice* m_OPTSettingMode;
+
+	public:
+
+		TinkOptions( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Tink - Options"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 547,393 ), long style = wxDEFAULT_DIALOG_STYLE );
+
+		~TinkOptions();
 
 };
 
