@@ -46,6 +46,7 @@ class TinkBase : public wxFrame
 		enum
 		{
 			ID_MENU_FILE_EXIT = 6000,
+			ID_MENU_FILE_OPTIONS,
 			ID_TBTN_HOME,
 			ID_TBTN_CALCULATOR,
 			ID_TBTN_LOG,

@@ -19,6 +19,10 @@ TinkBase::TinkBase( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_FileExit = new wxMenuItem( m_menuFile, ID_MENU_FILE_EXIT, wxString( _("E&xit") ) + wxT('\t') + wxT("Ctrl + x"), wxEmptyString, wxITEM_NORMAL );
 	m_menuFile->Append( m_FileExit );
 
+	wxMenuItem* m_FileOptions;
+	m_FileOptions = new wxMenuItem( m_menuFile, ID_MENU_FILE_OPTIONS, wxString( _("Options") ) + wxT('\t') + wxT("Ctrl + O"), _("Show program Options"), wxITEM_NORMAL );
+	m_menuFile->Append( m_FileOptions );
+
 	m_menuBar->Append( m_menuFile, _("&File") );
 
 	this->SetMenuBar( m_menuBar );
@@ -163,10 +167,7 @@ TinkOptions::TinkOptions( wxWindow* parent, wxWindowID id, const wxString& title
 	m_sizer0 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Options") ), wxVERTICAL );
 
 	m_optionsNotebook = new wxNotebook( m_sizer0->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
-
-	m_sizer0->Add( m_optionsNotebook, 1, wxEXPAND | wxALL, 5 );
-
-	m_optionsPageGeneral = new wxPanel( m_sizer0->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_optionsPageGeneral = new wxPanel( m_optionsNotebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_optionsPageGeneral->Hide();
 
 	wxGridBagSizer* m_sizerPageGeneral;
@@ -190,7 +191,9 @@ TinkOptions::TinkOptions( wxWindow* parent, wxWindowID id, const wxString& title
 	m_optionsPageGeneral->SetSizer( m_sizerPageGeneral );
 	m_optionsPageGeneral->Layout();
 	m_sizerPageGeneral->Fit( m_optionsPageGeneral );
-	m_sizer0->Add( m_optionsPageGeneral, 1, wxEXPAND | wxALL, 5 );
+	m_optionsNotebook->AddPage( m_optionsPageGeneral, _("General"), false );
+
+	m_sizer0->Add( m_optionsNotebook, 1, wxEXPAND | wxALL, 5 );
 
 
 	this->SetSizer( m_sizer0 );

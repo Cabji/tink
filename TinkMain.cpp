@@ -12,6 +12,7 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// Bind event handlers
 	Bind(wxEVT_TOOL, &TinkMain::OnTBtnClicked, this);
 	Bind(wxEVT_MENU, &TinkMain::OnMenuFileExit, this, ID_MENU_FILE_EXIT);
+	Bind(wxEVT_MENU, &TinkMain::OnMenuFileOptions, this, ID_MENU_FILE_OPTIONS);
 	// Initialize the PNG image handler
 	wxImage::AddHandler(new wxPNGHandler);
 
@@ -37,9 +38,11 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	m_toolBar->SetToolNormalBitmap(ID_TBTN_LOG, brewlogImage);
 	// Realize the toolbar
 	m_toolBar->Realize();
+
 	m_webViewHome = new MyTinkWebView(this);
 	m_calculatorsPanel = new MyTinkCalculators(this);
 	m_brewersLogPanel = new MyTinkBrewersLog(this);
+	m_optionsDialog = new MyTinkOptions(this);
 	m_calculatorsPanel->Hide();
 	m_brewersLogPanel->Hide();
 	m_currentPanel = m_webViewHome;
@@ -88,6 +91,12 @@ void TinkMain::OnMenuFileExit(wxCommandEvent &event)
 {
 	std::cout << "Exit menu item clicked" << std::endl;
 	Close(true);
+}
+
+void TinkMain::OnMenuFileOptions(wxCommandEvent &event)
+{
+	std::cout << "Options menu item clicked" << std::endl;
+	m_optionsDialog->Show();
 }
 
 void TinkMain::OnHomeTBtnClicked(wxCommandEvent &event)

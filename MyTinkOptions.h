@@ -17,6 +17,7 @@ class MyTinkOptions : public TinkOptions
 		/** Constructor */
 		MyTinkOptions( wxWindow* parent );
 	//// end generated class members
+	private: 
 
 };
 
