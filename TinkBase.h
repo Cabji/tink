@@ -29,6 +29,7 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/statbox.h>
+#include <wx/button.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -130,10 +131,11 @@ class TinkBrewersLog : public wxPanel
 	protected:
 		wxGridBagSizer* m_gbSizer;
 		wxStaticText* m_lblTitle;
+		wxButton* m_createDB;
 
 	public:
 
-		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 206,159 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkBrewersLog();
 

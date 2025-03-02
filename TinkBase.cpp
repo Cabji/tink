@@ -139,13 +139,16 @@ TinkBrewersLog::TinkBrewersLog( wxWindow* parent, wxWindowID id, const wxPoint& 
 	m_lblTitle->Wrap( -1 );
 	m_gbSizer->Add( m_lblTitle, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
 
+	m_createDB = new wxButton( this, wxID_ANY, _("Create DB File"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_gbSizer->Add( m_createDB, wxGBPosition( 1, 0 ), wxGBSpan( 1, 1 ), wxALL, 5 );
+
 
 	m_gbSizer->AddGrowableCol( 0 );
 	m_gbSizer->AddGrowableRow( 0 );
+	m_gbSizer->AddGrowableRow( 1 );
 
 	this->SetSizer( m_gbSizer );
 	this->Layout();
-	m_gbSizer->Fit( this );
 }
 
 TinkBrewersLog::~TinkBrewersLog()
