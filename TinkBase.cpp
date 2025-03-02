@@ -154,3 +154,51 @@ TinkBrewersLog::TinkBrewersLog( wxWindow* parent, wxWindowID id, const wxPoint& 
 TinkBrewersLog::~TinkBrewersLog()
 {
 }
+
+TinkOptions::TinkOptions( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxStaticBoxSizer* m_sizer0;
+	m_sizer0 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Options") ), wxVERTICAL );
+
+	m_optionsNotebook = new wxNotebook( m_sizer0->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+
+	m_sizer0->Add( m_optionsNotebook, 1, wxEXPAND | wxALL, 5 );
+
+	m_optionsPageGeneral = new wxPanel( m_sizer0->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_optionsPageGeneral->Hide();
+
+	wxGridBagSizer* m_sizerPageGeneral;
+	m_sizerPageGeneral = new wxGridBagSizer( 0, 0 );
+	m_sizerPageGeneral->SetFlexibleDirection( wxBOTH );
+	m_sizerPageGeneral->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_lblSettingMode = new wxStaticText( m_optionsPageGeneral, wxID_ANY, _("Program setting files save mode"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_lblSettingMode->Wrap( -1 );
+	m_sizerPageGeneral->Add( m_lblSettingMode, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 5 );
+
+	wxString m_OPTSettingModeChoices[] = { _("User Home Folder"), _("Portable") };
+	int m_OPTSettingModeNChoices = sizeof( m_OPTSettingModeChoices ) / sizeof( wxString );
+	m_OPTSettingMode = new wxChoice( m_optionsPageGeneral, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_OPTSettingModeNChoices, m_OPTSettingModeChoices, wxCB_SORT );
+	m_OPTSettingMode->SetSelection( 0 );
+	m_sizerPageGeneral->Add( m_OPTSettingMode, wxGBPosition( 0, 1 ), wxGBSpan( 1, 1 ), wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 5 );
+
+
+	m_sizerPageGeneral->AddGrowableCol( 1 );
+
+	m_optionsPageGeneral->SetSizer( m_sizerPageGeneral );
+	m_optionsPageGeneral->Layout();
+	m_sizerPageGeneral->Fit( m_optionsPageGeneral );
+	m_sizer0->Add( m_optionsPageGeneral, 1, wxEXPAND | wxALL, 5 );
+
+
+	this->SetSizer( m_sizer0 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+}
+
+TinkOptions::~TinkOptions()
+{
+}
