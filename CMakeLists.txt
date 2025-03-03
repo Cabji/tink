@@ -13,6 +13,7 @@ set(SOURCES
       MyTinkWebView.cpp
       MyTinkCalculators.cpp
       MyTinkBrewersLog.cpp
+      MyTinkOptions.cpp
       resources.rc
    )
 

@@ -25,6 +25,7 @@ public:
 	TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style);
 	void OnTBtnClicked(wxCommandEvent &event);
 	void OnMenuFileExit(wxCommandEvent &event);
+	void OnMenuFileOptions(wxCommandEvent &event);
 	void OnHomeTBtnClicked(wxCommandEvent &event);
 	bool ShowPanelAsCurrent(wxPanel *panelToShow);
 	double const APP_VERSION = 0.1;
@@ -38,6 +39,7 @@ private:
 	MyTinkWebView *m_webViewHome = nullptr;
 	MyTinkCalculators *m_calculatorsPanel = nullptr;
 	MyTinkBrewersLog *m_brewersLogPanel = nullptr;
+	MyTinkOptions *m_optionsDialog = nullptr;
 };
 
 #endif // __TinkMain__

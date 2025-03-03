@@ -29,6 +29,9 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/statbox.h>
+#include <wx/button.h>
+#include <wx/notebook.h>
+#include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -43,6 +46,7 @@ class TinkBase : public wxFrame
 		enum
 		{
 			ID_MENU_FILE_EXIT = 6000,
+			ID_MENU_FILE_OPTIONS,
 			ID_TBTN_HOME,
 			ID_TBTN_CALCULATOR,
 			ID_TBTN_LOG,
@@ -130,12 +134,34 @@ class TinkBrewersLog : public wxPanel
 	protected:
 		wxGridBagSizer* m_gbSizer;
 		wxStaticText* m_lblTitle;
+		wxButton* m_createDB;
 
 	public:
 
-		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		TinkBrewersLog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 206,159 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 
 		~TinkBrewersLog();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class TinkOptions
+///////////////////////////////////////////////////////////////////////////////
+class TinkOptions : public wxDialog
+{
+	private:
+
+	protected:
+		wxNotebook* m_optionsNotebook;
+		wxPanel* m_optionsPageGeneral;
+		wxStaticText* m_lblSettingMode;
+		wxChoice* m_OPTSettingMode;
+
+	public:
+
+		TinkOptions( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Tink - Options"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 547,393 ), long style = wxDEFAULT_DIALOG_STYLE );
+
+		~TinkOptions();
 
 };
 
