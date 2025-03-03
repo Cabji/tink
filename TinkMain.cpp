@@ -1,9 +1,11 @@
 #include "TinkBase.h"
 #include "TinkMain.h"
-#include <wx/toolbar.h>
+#include <iostream>
 #include <wx/bitmap.h>
 #include <wx/image.h>
-#include <iostream>
+#include <wx/filename.h>
+#include <wx/stdpaths.h>
+#include <wx/toolbar.h>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
 	: TinkBase(parent, id, title, pos, size, style)
@@ -39,16 +41,28 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// Realize the toolbar
 	m_toolBar->Realize();
 
-	m_webViewHome = new MyTinkWebView(this);
-	m_calculatorsPanel = new MyTinkCalculators(this);
+	// Create configuration objects
+    wxString localConfigPath = wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + "TinkLocal.ini";
+    wxString globalConfigPath = wxStandardPaths::Get().GetConfigDir() + wxFileName::GetPathSeparator() + "TinkGlobal.ini";
+    m_localConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, localConfigPath, wxEmptyString, wxCONFIG_USE_LOCAL_FILE);
+    m_globalConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, globalConfigPath, wxEmptyString, wxCONFIG_USE_GLOBAL_FILE);
+
 	m_brewersLogPanel = new MyTinkBrewersLog(this);
+	m_calculatorsPanel = new MyTinkCalculators(this);
 	m_optionsDialog = new MyTinkOptions(this);
+	m_webViewHome = new MyTinkWebView(this);
+	
+	m_currentPanel = m_webViewHome;
+
 	m_calculatorsPanel->Hide();
 	m_brewersLogPanel->Hide();
-	m_currentPanel = m_webViewHome;
 	m_mainFrameSizer->Add(m_currentPanel, wxGBPosition(0, 0), wxGBSpan(1, 1), wxEXPAND | wxALL, 5);
 	m_mainFrameSizer->Layout();
 	Show();
+
+	// show config paths
+	std::cout << "Local config path: " << localConfigPath << std::endl;
+	std::cout << "Global config path: " << globalConfigPath << std::endl;
 }
 
 void TinkMain::OnTBtnClicked(wxCommandEvent &event)
