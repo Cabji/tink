@@ -16,6 +16,7 @@ class MyTinkOptions : public TinkOptions
 	public:
 		/** Constructor */
 		MyTinkOptions( wxWindow* parent );
+		wxString GetValue(const wxString &key);
 	//// end generated class members
 	private: 
 

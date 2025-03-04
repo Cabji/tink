@@ -2,10 +2,11 @@
 #include "TinkMain.h"
 #include <iostream>
 #include <wx/bitmap.h>
+#include <wx/fileconf.h>
 #include <wx/image.h>
-#include <wx/filename.h>
 #include <wx/stdpaths.h>
 #include <wx/toolbar.h>
+#include <wx/filename.h>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
 	: TinkBase(parent, id, title, pos, size, style)
@@ -41,18 +42,19 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// Realize the toolbar
 	m_toolBar->Realize();
 
-	// Create configuration objects
-    wxString localConfigPath = wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + "TinkLocal.ini";
-    wxString globalConfigPath = wxStandardPaths::Get().GetConfigDir() + wxFileName::GetPathSeparator() + "TinkGlobal.ini";
-    m_localConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, localConfigPath, wxEmptyString, wxCONFIG_USE_LOCAL_FILE);
-    m_globalConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, globalConfigPath, wxEmptyString, wxCONFIG_USE_GLOBAL_FILE);
-
 	m_brewersLogPanel = new MyTinkBrewersLog(this);
 	m_calculatorsPanel = new MyTinkCalculators(this);
 	m_optionsDialog = new MyTinkOptions(this);
 	m_webViewHome = new MyTinkWebView(this);
 	
-	m_currentPanel = m_webViewHome;
+	m_currentPanel = m_brewersLogPanel;
+
+	// Create configuration objects
+    wxString localConfigPath = wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + "TinkLocal.ini";
+    wxString globalConfigPath = wxStandardPaths::Get().GetDataDir() + wxFileName::GetPathSeparator() + "TinkGlobal.ini";
+    m_localConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, localConfigPath, wxEmptyString, wxCONFIG_USE_LOCAL_FILE);
+    m_globalConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, globalConfigPath, wxEmptyString, wxCONFIG_USE_GLOBAL_FILE);
+	  m_localConfig->Write("SettingMode", m_optionsDialog->GetValue("SettingMode"));
 
 	m_calculatorsPanel->Hide();
 	m_brewersLogPanel->Hide();
@@ -63,6 +65,14 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	// show config paths
 	std::cout << "Local config path: " << localConfigPath << std::endl;
 	std::cout << "Global config path: " << globalConfigPath << std::endl;
+}
+
+TinkMain::~TinkMain()
+{
+	// class destructor
+	// write config files out to disk
+	m_localConfig->Flush();
+	m_globalConfig->Flush();
 }
 
 void TinkMain::OnTBtnClicked(wxCommandEvent &event)
