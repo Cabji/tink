@@ -22,6 +22,7 @@ public:
 
 	// custom constructor declared below here
 	TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style);
+	~TinkMain();
 	void OnTBtnClicked(wxCommandEvent &event);
 	void OnMenuFileExit(wxCommandEvent &event);
 	void OnMenuFileOptions(wxCommandEvent &event);
