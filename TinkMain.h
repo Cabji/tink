@@ -35,6 +35,8 @@ public:
 
 private:
 	wxPanel *m_currentPanel = nullptr;
+	wxFileConfig *m_localConfig = nullptr;
+	wxFileConfig *m_globalConfig = nullptr;
 	MyTinkWebView *m_webViewHome = nullptr;
 	MyTinkCalculators *m_calculatorsPanel = nullptr;
 	MyTinkBrewersLog *m_brewersLogPanel = nullptr;
