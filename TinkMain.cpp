@@ -1,8 +1,10 @@
 #include "TinkBase.h"
 #include "TinkMain.h"
-#include <wx/toolbar.h>
 #include <wx/bitmap.h>
+#include <wx/fileconf.h>
 #include <wx/image.h>
+#include <wx/stdpaths.h>
+#include <wx/toolbar.h>
 #include <iostream>
 
 TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style)
