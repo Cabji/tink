@@ -46,15 +46,20 @@ TinkMain::TinkMain(wxWindow *parent, wxWindowID id, const wxString &title, const
 	m_calculatorsPanel = new MyTinkCalculators(this);
 	m_optionsDialog = new MyTinkOptions(this);
 	m_webViewHome = new MyTinkWebView(this);
-	
+
 	m_currentPanel = m_brewersLogPanel;
 
 	// Create configuration objects
-    wxString localConfigPath = wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + "TinkLocal.ini";
-    wxString globalConfigPath = wxStandardPaths::Get().GetDataDir() + wxFileName::GetPathSeparator() + "TinkGlobal.ini";
-    m_localConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, localConfigPath, wxEmptyString, wxCONFIG_USE_LOCAL_FILE);
-    m_globalConfig = new wxFileConfig(wxT("Tink"), wxEmptyString, globalConfigPath, wxEmptyString, wxCONFIG_USE_GLOBAL_FILE);
-	  m_localConfig->Write("SettingMode", m_optionsDialog->GetValue("SettingMode"));
+	wxString localConfigPath = wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + APP_NAME + wxFileName::GetPathSeparator() + "TinkLocal.ini";
+	wxString globalConfigPath = wxStandardPaths::Get().GetDataDir() + wxFileName::GetPathSeparator() + "TinkGlobal.ini";
+
+	// Ensure the directory exists
+	wxFileName::Mkdir(wxStandardPaths::Get().GetUserConfigDir() + wxFileName::GetPathSeparator() + APP_NAME, wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL);
+
+	m_localConfig = new wxFileConfig(APP_NAME, wxEmptyString, localConfigPath, wxEmptyString, wxCONFIG_USE_LOCAL_FILE);
+	m_globalConfig = new wxFileConfig(APP_NAME, wxEmptyString, globalConfigPath, wxEmptyString, wxCONFIG_USE_GLOBAL_FILE);
+	m_globalConfig->Write("TestVariable", "Test Value");
+	m_localConfig->Write("SettingMode", m_optionsDialog->GetValue("SettingMode"));
 
 	m_calculatorsPanel->Hide();
 	m_brewersLogPanel->Hide();

@@ -29,6 +29,7 @@ public:
 	void OnMenuFileOptions(wxCommandEvent &event);
 	void OnHomeTBtnClicked(wxCommandEvent &event);
 	bool ShowPanelAsCurrent(wxPanel *panelToShow);
+	const wxString APP_NAME = "Tink";
 	double const APP_VERSION = 0.1;
 	int const DEFAULT_ICON_HEIGHT = 24;
 	int const DEFAULT_ICON_WIDTH = 24;
@@ -41,8 +42,6 @@ private:
 	MyTinkCalculators *m_calculatorsPanel = nullptr;
 	MyTinkBrewersLog *m_brewersLogPanel = nullptr;
 	MyTinkOptions *m_optionsDialog = nullptr;
-	wxFileConfig *m_localConfig = nullptr;
-	wxFileConfig *m_globalConfig = nullptr;
 };
 
 #endif // __TinkMain__
